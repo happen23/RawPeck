@@ -76,10 +76,18 @@ int main(int argc, char *argv[]) {
     unsigned line_num = 0;
     void* src_line_buf = NULL;
     unsigned short* dst_line_buf = NULL;
+    raw_info_t info = {0};
 
-    raw_info_t info = {10, 64, 896, 1520};
-    f_in = fopen("/home/wanghaipeng/pic_p0_in_packed.raw", "rb");
-    f_out = fopen("/home/wanghaipeng/unpacked_10bit.raw", "wb");
+    if (argc < 7) {
+        printf("usage: rawpeck img_width img_height pixel_width bus_width path_of_packed_raw path_of_unpacked_raw");
+        return -1;
+    }
+    info.img_width = atoi(argv[1]);
+    info.img_height = atoi(argv[2]);
+    info.pix_width = atoi(argv[3]);
+    info.bus_width = atoi(argv[4]);
+    f_in = fopen(argv[5], "rb");
+    f_out = fopen(argv[6], "wb");
     beat_width = info.bus_width / 8;
     line_stride = (info.img_width * info.pix_width + info.bus_width -1) / info.bus_width * beat_width;
     src_line_buf = malloc(line_stride);
