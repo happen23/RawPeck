@@ -99,6 +99,13 @@ int main(int argc, char *argv[]) {
         line_num++;
     }
 
+    if (src_line_buf) {
+        free(src_line_buf);
+    }
+    if (dst_line_buf) {
+        free(dst_line_buf);
+    }
+
     return 0;
 }
 
