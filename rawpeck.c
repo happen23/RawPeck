@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
     raw_info_t info = {0};
 
     if (argc < 7) {
-        printf("usage: rawpeck img_width img_height pixel_width bus_width path_of_packed_raw path_of_unpacked_raw");
+        printf("usage: rawpeck img_width img_height pixel_width bus_width path_of_packed_raw path_of_unpacked_raw\n");
         return -1;
     }
     info.img_width = atoi(argv[1]);
